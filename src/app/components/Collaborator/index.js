@@ -1,9 +1,11 @@
+import { IoMdCloseCircle } from "react-icons/io";
 import "./Collaborator.css";
 
-const Collaborator = ({ name, cargo, imagem, colorTwo }) => {
+const Collaborator = ({ name, cargo, imagem, color, whenDeleting }) => {
   return (
     <div className="collaborator">
-      <div className="header" style={{ backgroundColor: colorTwo }}>
+      <IoMdCloseCircle size={25} className="delete" onClick={whenDeleting} />
+      <div className="header" style={{ backgroundColor: color }}>
         <img src={imagem} alt={name} />
       </div>
       <div className="footer">

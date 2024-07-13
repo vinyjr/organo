@@ -9,9 +9,13 @@ const DropdownList = (props) => {
         required={props.required}
         value={props.valor}
       >
-        <option value=""></option>
+        <option value={props.name}></option>
         {props.itens?.map((item) => {
-          return <option key={item}>{item}</option>;
+          return (
+            <option key={item.name} value={item.name}>
+              {item.name}
+            </option>
+          );
         })}
       </select>
     </div>

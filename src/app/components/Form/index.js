@@ -12,6 +12,10 @@ const Form = (props) => {
   const [imagem, setImagem] = useState("");
   const [team, setTeam] = useState("");
 
+  const teamOptions = props.teams.map((team) => ({
+    name: team,
+  }));
+
   const onSave = (event) => {
     event?.preventDefault();
     props.newCollaboratorAdded({
@@ -53,7 +57,7 @@ const Form = (props) => {
         <DropdownList
           required={true}
           label="Time"
-          itens={props.teams}
+          itens={teamOptions}
           valor={team}
           changed={(valor) => setTeam(valor)}
         />

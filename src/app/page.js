@@ -7,43 +7,36 @@ import { useState } from "react";
 import Team from "./components/Team";
 
 export default function Home() {
-  const teams = [
+  const [ teams, setTeams ] = useState([
     {
       name: "Programação",
-      colorOne: "#D9F7E9",
-      colorTwo: "#57C278 ",
+      color: "#57C278 ",
     },
     {
       name: "Front End",
-      colorOne: "#E8F8FF",
-      colorTwo: "#82CFFA",
+      color: "#82CFFA",
     },
     {
       name: "Data Science",
-      colorOne: "#F0F8E2",
-      colorTwo: "#A6D157",
+      color: "#A6D157",
     },
     {
       name: "Devops",
-      colorOne: "#FDE7E8",
-      colorTwo: "#E06B69",
+      color: "#E06B69",
     },
     {
       name: "UX e Design",
-      colorOne: "#FAE9F5",
-      colorTwo: "#DB6EBF",
+      color: "#DB6EBF",
     },
     {
       name: "Mobile",
-      colorOne: "#FFF5D9",
-      colorTwo: "#FFBA05",
+      color: "#FFBA05",
     },
     {
       name: "Inovação e Gestão",
-      colorOne: "#FFEEDF",
-      colorTwo: "#FF8A29",
+      color: "#FF8A29",
     },
-  ];
+  ]);
 
   const [collaborators, setCollaborators] = useState([]);
 
@@ -51,24 +44,40 @@ export default function Home() {
     setCollaborators([...collaborators, collaborator]);
   };
 
+  function deleteCollaborator() {
+    console.log("Deletando colaborador");
+  }
+
+  function changeColorTeam(color, name) {
+    setTeams(
+      teams?.map((team) => {
+        if (team.name === name) {
+          team.color = color;
+        }
+        return team;
+      })
+    );
+  }
+
   return (
     <main>
       <Banner />
       <Form
-        teams={teams.map((team) => team.name)}
+        teams={teams?.map((team) => team.name)}
         newCollaboratorAdded={(collaborator) =>
           newCollaboratorAdded(collaborator)
         }
       />
-      {teams.map((team) => (
+      {teams?.map((team) => (
         <Team
+          changeColor={changeColorTeam}
           key={team.name}
           name={team.name}
-          colorOne={team.colorOne}
-          colorTwo={team.colorTwo}
+          color={team.color}
           collaborators={collaborators.filter(
             (collaborator) => collaborator.team === team.name
           )}
+          whenDeleting={deleteCollaborator()}
         />
       ))}
     </main>
