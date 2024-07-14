@@ -69,10 +69,15 @@ export default function Home() {
     );
   }
 
+  function registerTeam(newTeam) {
+    setTeams([...teams, {...newTeam, id: uuidv4()}])
+  }
+
   return (
     <main>
       <Banner />
       <Form
+        registerTeam={registerTeam}
         teams={teams?.map((team) => team.name)}
         newCollaboratorAdded={(collaborator) =>
           newCollaboratorAdded(collaborator)

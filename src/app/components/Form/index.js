@@ -11,6 +11,8 @@ const Form = (props) => {
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
   const [team, setTeam] = useState("");
+  const [teamName, setTeamName] = useState("");
+  const [teamColor, setTeamColor] = useState("");
 
   const teamOptions = props.teams.map((team) => ({
     name: team,
@@ -62,6 +64,26 @@ const Form = (props) => {
           changed={(valor) => setTeam(valor)}
         />
         <Button>Criar Card</Button>
+      </form>
+      <form onSubmit={(event) => {
+        event.preventDefault()
+        props.registerTeam({ name: teamName, color: teamColor })
+      } }>
+        <h2>Preencha os dados para criar um novo time.</h2>
+        <InputText
+          required
+          label="Nome"
+          placeholder="Digite o nome do time"
+          valor={teamName}
+          changed={(valor) => setTeamName(valor)}
+        />
+        <InputText
+          label="Cor"
+          placeholder="Digite a cor do time"
+          value={teamColor}
+          changed={(valor) => setTeamColor(valor)}
+        />
+        <Button>Criar um novo time</Button>
       </form>
     </section>
   );

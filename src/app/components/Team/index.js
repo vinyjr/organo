@@ -15,12 +15,12 @@ const Team = (props) => {
         className="input-color"
       />
       <h3 style={{ borderColor: props.color }}>{props.name}</h3>
-      <div className="collaborators">
+      <div className="collaborators"> 
         {props.collaborators.map((collaborator) => {
           return (
             <Collaborator
               color={props.color}
-              key={collaborator.name}
+              key={collaborator.id}
               id={collaborator.id}
               name={collaborator.nome}
               cargo={collaborator.cargo}
