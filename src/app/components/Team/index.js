@@ -1,6 +1,6 @@
 import hexToRgba from 'hex-to-rgba';
 import Collaborator from "../Collaborator";
-import "./Team.css";
+import "./team.css";
 
 const Team = (props) => {
   return props.collaborators.length > 0 ? (

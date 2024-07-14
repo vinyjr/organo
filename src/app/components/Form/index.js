@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Button from "../Button";
 import DropdownList from "../DropdownList";
-import InputText from "../TextField/TextField";
+import Field from "../Field";
 import "./Form.css";
 
 const Form = (props) => {
@@ -36,21 +36,21 @@ const Form = (props) => {
     <section className="form">
       <form onSubmit={onSave}>
         <h2>Preencha os dados para criar o card do colaborador.</h2>
-        <InputText
+        <Field
           required={true}
           label="Nome"
           placeholder="Digite seu nome"
           valor={nome}
           changed={(valor) => setNome(valor)}
         />
-        <InputText
+        <Field
           required={true}
           label="Cargo"
           placeholder="Digite seu cargo"
           value={cargo}
           changed={(valor) => setCargo(valor)}
         />
-        <InputText
+        <Field
           label="Imagem"
           placeholder="Informe o endereço da imagem"
           value={imagem}
@@ -65,19 +65,23 @@ const Form = (props) => {
         />
         <Button>Criar Card</Button>
       </form>
-      <form onSubmit={(event) => {
-        event.preventDefault()
-        props.registerTeam({ name: teamName, color: teamColor })
-      } }>
+      <form
+        onSubmit={(event) => {
+          event?.preventDefault();
+          props.registerTeam({ name: teamName, color: teamColor });
+        }}
+      >
         <h2>Preencha os dados para criar um novo time.</h2>
-        <InputText
+        <Field
           required
           label="Nome"
           placeholder="Digite o nome do time"
           valor={teamName}
           changed={(valor) => setTeamName(valor)}
         />
-        <InputText
+        <Field
+          required
+          type="color"
           label="Cor"
           placeholder="Digite a cor do time"
           value={teamColor}
