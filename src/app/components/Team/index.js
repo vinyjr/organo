@@ -9,7 +9,7 @@ const Team = (props) => {
       style={{ backgroundColor: hexToRgba(props.color, "0.6") }}
     >
       <input
-        onChange={(event) => props.changeColor(event.target.value, props.name)}
+        onChange={(event) => props.changeColor(event.target.value, props.id)}
         value={props.color}
         type="color"
         className="input-color"
@@ -20,7 +20,8 @@ const Team = (props) => {
           return (
             <Collaborator
               color={props.color}
-              key={collaborator.nome}
+              key={collaborator.name}
+              id={collaborator.id}
               name={collaborator.nome}
               cargo={collaborator.cargo}
               imagem={collaborator.imagem}
